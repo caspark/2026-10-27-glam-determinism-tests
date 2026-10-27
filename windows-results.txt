@@ -1,0 +1,36 @@
+rustc 1.95.0 (59807616e 2026-04-14)
+binary: rustc
+commit-hash: 59807616e1fa2540724bfbac14d7976d7e4a3860
+commit-date: 2026-04-14
+host: x86_64-pc-windows-msvc
+release: 1.95.0
+LLVM version: 22.1.2
+cargo 1.95.0 (f2d3ce0bd 2026-03-21)
+RUSTFLAGS=
+CARGO_ENCODED_RUSTFLAGS=
+=== glam 0.30.10 / Windows default backend ===
+   Compiling glam-reduction-repro v0.0.0 (C:\temp\glam-reduction-repro-remote\v0.30.10)
+    Finished `release` profile [optimized] target(s) in 0.26s
+     Running `build\release\glam-reduction-repro.exe`
+element_sum: 0
+dot(ONE): 2
+=== glam 0.30.10 / Windows scalar-math ===
+   Compiling glam-reduction-repro v0.0.0 (C:\temp\glam-reduction-repro-remote\v0.30.10)
+    Finished `release` profile [optimized] target(s) in 0.21s
+     Running `build\release\glam-reduction-repro.exe`
+element_sum: 1
+dot(ONE): 1
+=== glam 0.33.12 / Windows default backend ===
+   Compiling glam v0.33.12
+   Compiling glam-reduction-repro v0.0.0 (C:\temp\glam-reduction-repro-remote\v0.33.12)
+    Finished `release` profile [optimized] target(s) in 9.40s
+     Running `build\release\glam-reduction-repro.exe`
+element_sum: 0
+dot(ONE): 2
+=== glam 0.33.12 / Windows scalar-math ===
+   Compiling glam v0.33.12
+   Compiling glam-reduction-repro v0.0.0 (C:\temp\glam-reduction-repro-remote\v0.33.12)
+    Finished `release` profile [optimized] target(s) in 8.43s
+     Running `build\release\glam-reduction-repro.exe`
+element_sum: 1
+dot(ONE): 1

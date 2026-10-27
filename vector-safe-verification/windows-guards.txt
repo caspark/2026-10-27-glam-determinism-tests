@@ -1,0 +1,21 @@
+rustc 1.95.0 (59807616e 2026-04-14)
+binary: rustc
+commit-hash: 59807616e1fa2540724bfbac14d7976d7e4a3860
+commit-date: 2026-04-14
+host: x86_64-pc-windows-msvc
+release: 1.95.0
+LLVM version: 22.1.2
+warning: unused import: `crate::prelude::*`
+ --> src\safe_float.rs:6:5
+  |
+6 | use crate::prelude::*;
+  |     ^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+f32: 32 scalar checks passed
+f64: 32 scalar checks passed
+Vec2: 72 vector checks passed
+Vec3: 103 vector checks passed
+Vec3A: 103 vector checks passed
+Vec4: 134 vector checks passed

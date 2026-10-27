@@ -1,0 +1,3 @@
+# Line endings are part of the captured process output
+*.txt -text whitespace=cr-at-eol
+*.log -text whitespace=cr-at-eol

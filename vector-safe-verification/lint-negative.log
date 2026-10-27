@@ -1,0 +1,326 @@
+   Compiling libm v0.2.16
+    Checking glam v0.30.10
+    Checking vector-safe-verification v0.0.0 (/Users/caspar/src/wizard-pixels/target/vector-safe-verification)
+warning: unused import: `crate::prelude::*`
+ --> src/safe_float.rs:6:5
+  |
+6 | use crate::prelude::*;
+  |     ^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error: use of a disallowed method `f32::min`
+  --> src/main.rs:27:57
+   |
+27 |             for (got, expected) in [(a.min_safe(1.0), a.min(1.0)), (a.max_safe(-1.0), a.max(-1.0)), (a.clamp_safe(-1.0, 1.0), a.clam...
+   |                                                         ^^^ help: Use min_safe to canonicalize signed zeros: `min_safe`
+...
+82 |     verify_scalar!(f32);
+   |     ------------------- in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: requested on the command line with `-D clippy::disallowed-methods`
+   = note: this error originates in the macro `verify_scalar` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `f32::max`
+  --> src/main.rs:27:89
+   |
+27 |             for (got, expected) in [(a.min_safe(1.0), a.min(1.0)), (a.max_safe(-1.0), a.max(-1.0)), (a.clamp_safe(-1.0, 1.0), a.clam...
+   |                                                                                         ^^^ help: Use max_safe to canonicalize signed zeros: `max_safe`
+...
+82 |     verify_scalar!(f32);
+   |     ------------------- in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_scalar` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `f32::clamp`
+  --> src/main.rs:27:129
+   |
+27 |             for (got, expected) in [(a.min_safe(1.0), a.min(1.0)), (a.max_safe(-1.0), a.max(-1.0)), (a.clamp_safe(-1.0, 1.0), a.clamp(-1...
+   |                                                                                                                                 ^^^^^ help: Use clamp_safe to canonicalize signed zeros: `clamp_safe`
+...
+82 |     verify_scalar!(f32);
+   |     ------------------- in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_scalar` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `f64::min`
+  --> src/main.rs:27:57
+   |
+27 |             for (got, expected) in [(a.min_safe(1.0), a.min(1.0)), (a.max_safe(-1.0), a.max(-1.0)), (a.clamp_safe(-1.0, 1.0), a.clam...
+   |                                                         ^^^ help: Use min_safe to canonicalize signed zeros: `min_safe`
+...
+83 |     verify_scalar!(f64);
+   |     ------------------- in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_scalar` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `f64::max`
+  --> src/main.rs:27:89
+   |
+27 |             for (got, expected) in [(a.min_safe(1.0), a.min(1.0)), (a.max_safe(-1.0), a.max(-1.0)), (a.clamp_safe(-1.0, 1.0), a.clam...
+   |                                                                                         ^^^ help: Use max_safe to canonicalize signed zeros: `max_safe`
+...
+83 |     verify_scalar!(f64);
+   |     ------------------- in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_scalar` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `f64::clamp`
+  --> src/main.rs:27:129
+   |
+27 |             for (got, expected) in [(a.min_safe(1.0), a.min(1.0)), (a.max_safe(-1.0), a.max(-1.0)), (a.clamp_safe(-1.0, 1.0), a.clamp(-1...
+   |                                                                                                                                 ^^^^^ help: Use clamp_safe to canonicalize signed zeros: `clamp_safe`
+...
+83 |     verify_scalar!(f64);
+   |     ------------------- in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_scalar` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `glam::Vec2::min`
+  --> src/main.rs:67:57
+   |
+67 |         for (got, expected) in [(lhs.min_safe(rhs), lhs.min(rhs)), (lhs.max_safe(rhs), lhs.max(rhs)), (lhs.clamp_safe(-<$vector>::ON...
+   |                                                         ^^^ help: Use min_safe to canonicalize vector signed zeros: `min_safe`
+...
+84 |     verify_vector!(Vec2, 2);
+   |     ----------------------- in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_vector` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `glam::Vec2::max`
+  --> src/main.rs:67:92
+   |
+67 |         for (got, expected) in [(lhs.min_safe(rhs), lhs.min(rhs)), (lhs.max_safe(rhs), lhs.max(rhs)), (lhs.clamp_safe(-<$vector>::ON...
+   |                                                                                            ^^^ help: Use max_safe to canonicalize vector signed zeros: `max_safe`
+...
+84 |     verify_vector!(Vec2, 2);
+   |     ----------------------- in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_vector` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `glam::Vec2::clamp`
+  --> src/main.rs:67:157
+   |
+67 |         for (got, expected) in [(lhs.min_safe(rhs), lhs.min(rhs)), (lhs.max_safe(rhs), lhs.max(rhs)), (lhs.clamp_safe(-<$vector>::ONE, <$vector>::ONE), lhs.clamp(-<...
+   |                                                                                                                                                             ^^^^^ help: Use clamp_safe to canonicalize vector signed zeros: `clamp_safe`
+...
+84 |     verify_vector!(Vec2, 2);
+   |     ----------------------- in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_vector` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `glam::Vec2::min_element`
+  --> src/main.rs:73:62
+   |
+73 |         for (got, expected) in [(lhs.min_element_safe(), lhs.min_element()), (lhs.max_element_safe(), lhs.max_element())] {
+   |                                                              ^^^^^^^^^^^ help: Use min_element_safe to canonicalize vector signed zeros: `min_element_safe`
+...
+84 |     verify_vector!(Vec2, 2);
+   |     ----------------------- in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_vector` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `glam::Vec2::max_element`
+  --> src/main.rs:73:107
+   |
+73 |         for (got, expected) in [(lhs.min_element_safe(), lhs.min_element()), (lhs.max_element_safe(), lhs.max_element())] {
+   |                                                                                                           ^^^^^^^^^^^ help: Use max_element_safe to canonicalize vector signed zeros: `max_element_safe`
+...
+84 |     verify_vector!(Vec2, 2);
+   |     ----------------------- in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_vector` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `glam::Vec3::min`
+  --> src/main.rs:67:57
+   |
+67 |         for (got, expected) in [(lhs.min_safe(rhs), lhs.min(rhs)), (lhs.max_safe(rhs), lhs.max(rhs)), (lhs.clamp_safe(-<$vector>::ON...
+   |                                                         ^^^ help: Use min_safe to canonicalize vector signed zeros: `min_safe`
+...
+85 |     verify_vector!(Vec3, 3);
+   |     ----------------------- in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_vector` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `glam::Vec3::max`
+  --> src/main.rs:67:92
+   |
+67 |         for (got, expected) in [(lhs.min_safe(rhs), lhs.min(rhs)), (lhs.max_safe(rhs), lhs.max(rhs)), (lhs.clamp_safe(-<$vector>::ON...
+   |                                                                                            ^^^ help: Use max_safe to canonicalize vector signed zeros: `max_safe`
+...
+85 |     verify_vector!(Vec3, 3);
+   |     ----------------------- in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_vector` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `glam::Vec3::clamp`
+  --> src/main.rs:67:157
+   |
+67 |         for (got, expected) in [(lhs.min_safe(rhs), lhs.min(rhs)), (lhs.max_safe(rhs), lhs.max(rhs)), (lhs.clamp_safe(-<$vector>::ONE, <$vector>::ONE), lhs.clamp(-<...
+   |                                                                                                                                                             ^^^^^ help: Use clamp_safe to canonicalize vector signed zeros: `clamp_safe`
+...
+85 |     verify_vector!(Vec3, 3);
+   |     ----------------------- in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_vector` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `glam::Vec3::min_element`
+  --> src/main.rs:73:62
+   |
+73 |         for (got, expected) in [(lhs.min_element_safe(), lhs.min_element()), (lhs.max_element_safe(), lhs.max_element())] {
+   |                                                              ^^^^^^^^^^^ help: Use min_element_safe to canonicalize vector signed zeros: `min_element_safe`
+...
+85 |     verify_vector!(Vec3, 3);
+   |     ----------------------- in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_vector` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `glam::Vec3::max_element`
+  --> src/main.rs:73:107
+   |
+73 |         for (got, expected) in [(lhs.min_element_safe(), lhs.min_element()), (lhs.max_element_safe(), lhs.max_element())] {
+   |                                                                                                           ^^^^^^^^^^^ help: Use max_element_safe to canonicalize vector signed zeros: `max_element_safe`
+...
+85 |     verify_vector!(Vec3, 3);
+   |     ----------------------- in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_vector` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `glam::Vec3A::min`
+  --> src/main.rs:67:57
+   |
+67 |         for (got, expected) in [(lhs.min_safe(rhs), lhs.min(rhs)), (lhs.max_safe(rhs), lhs.max(rhs)), (lhs.clamp_safe(-<$vector>::ON...
+   |                                                         ^^^ help: Use min_safe to canonicalize vector signed zeros: `min_safe`
+...
+86 |     verify_vector!(Vec3A, 3);
+   |     ------------------------ in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_vector` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `glam::Vec3A::max`
+  --> src/main.rs:67:92
+   |
+67 |         for (got, expected) in [(lhs.min_safe(rhs), lhs.min(rhs)), (lhs.max_safe(rhs), lhs.max(rhs)), (lhs.clamp_safe(-<$vector>::ON...
+   |                                                                                            ^^^ help: Use max_safe to canonicalize vector signed zeros: `max_safe`
+...
+86 |     verify_vector!(Vec3A, 3);
+   |     ------------------------ in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_vector` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `glam::Vec3A::clamp`
+  --> src/main.rs:67:157
+   |
+67 |         for (got, expected) in [(lhs.min_safe(rhs), lhs.min(rhs)), (lhs.max_safe(rhs), lhs.max(rhs)), (lhs.clamp_safe(-<$vector>::ONE, <$vector>::ONE), lhs.clamp(-<...
+   |                                                                                                                                                             ^^^^^ help: Use clamp_safe to canonicalize vector signed zeros: `clamp_safe`
+...
+86 |     verify_vector!(Vec3A, 3);
+   |     ------------------------ in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_vector` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `glam::Vec3A::min_element`
+  --> src/main.rs:73:62
+   |
+73 |         for (got, expected) in [(lhs.min_element_safe(), lhs.min_element()), (lhs.max_element_safe(), lhs.max_element())] {
+   |                                                              ^^^^^^^^^^^ help: Use min_element_safe to canonicalize vector signed zeros: `min_element_safe`
+...
+86 |     verify_vector!(Vec3A, 3);
+   |     ------------------------ in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_vector` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `glam::Vec3A::max_element`
+  --> src/main.rs:73:107
+   |
+73 |         for (got, expected) in [(lhs.min_element_safe(), lhs.min_element()), (lhs.max_element_safe(), lhs.max_element())] {
+   |                                                                                                           ^^^^^^^^^^^ help: Use max_element_safe to canonicalize vector signed zeros: `max_element_safe`
+...
+86 |     verify_vector!(Vec3A, 3);
+   |     ------------------------ in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_vector` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `glam::Vec4::min`
+  --> src/main.rs:67:57
+   |
+67 |         for (got, expected) in [(lhs.min_safe(rhs), lhs.min(rhs)), (lhs.max_safe(rhs), lhs.max(rhs)), (lhs.clamp_safe(-<$vector>::ON...
+   |                                                         ^^^ help: Use min_safe to canonicalize vector signed zeros: `min_safe`
+...
+87 |     verify_vector!(Vec4, 4);
+   |     ----------------------- in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_vector` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `glam::Vec4::max`
+  --> src/main.rs:67:92
+   |
+67 |         for (got, expected) in [(lhs.min_safe(rhs), lhs.min(rhs)), (lhs.max_safe(rhs), lhs.max(rhs)), (lhs.clamp_safe(-<$vector>::ON...
+   |                                                                                            ^^^ help: Use max_safe to canonicalize vector signed zeros: `max_safe`
+...
+87 |     verify_vector!(Vec4, 4);
+   |     ----------------------- in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_vector` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `glam::Vec4::clamp`
+  --> src/main.rs:67:157
+   |
+67 |         for (got, expected) in [(lhs.min_safe(rhs), lhs.min(rhs)), (lhs.max_safe(rhs), lhs.max(rhs)), (lhs.clamp_safe(-<$vector>::ONE, <$vector>::ONE), lhs.clamp(-<...
+   |                                                                                                                                                             ^^^^^ help: Use clamp_safe to canonicalize vector signed zeros: `clamp_safe`
+...
+87 |     verify_vector!(Vec4, 4);
+   |     ----------------------- in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_vector` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `glam::Vec4::min_element`
+  --> src/main.rs:73:62
+   |
+73 |         for (got, expected) in [(lhs.min_element_safe(), lhs.min_element()), (lhs.max_element_safe(), lhs.max_element())] {
+   |                                                              ^^^^^^^^^^^ help: Use min_element_safe to canonicalize vector signed zeros: `min_element_safe`
+...
+87 |     verify_vector!(Vec4, 4);
+   |     ----------------------- in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_vector` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: use of a disallowed method `glam::Vec4::max_element`
+  --> src/main.rs:73:107
+   |
+73 |         for (got, expected) in [(lhs.min_element_safe(), lhs.min_element()), (lhs.max_element_safe(), lhs.max_element())] {
+   |                                                                                                           ^^^^^^^^^^^ help: Use max_element_safe to canonicalize vector signed zeros: `max_element_safe`
+...
+87 |     verify_vector!(Vec4, 4);
+   |     ----------------------- in this macro invocation
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#disallowed_methods
+   = note: this error originates in the macro `verify_vector` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: `vector-safe-verification` (bin "vector-safe-verification") generated 1 warning
+error: could not compile `vector-safe-verification` (bin "vector-safe-verification") due to 26 previous errors; 1 warning emitted

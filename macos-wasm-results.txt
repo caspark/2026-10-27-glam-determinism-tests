@@ -1,0 +1,26 @@
+rustc 1.96.1 (31fca3adb 2026-06-26)
+binary: rustc
+commit-hash: 31fca3adb283cc9dfd56b49cdee9a96eb9c96ffd
+commit-date: 2026-06-26
+host: aarch64-apple-darwin
+release: 1.96.1
+LLVM version: 22.1.2
+wasmtime 44.0.1 (f302ebd6b 2026-04-30)
+=== glam 0.30.10 / ARM64 NEON ===
+element_sum: 0
+dot(ONE): 0
+=== glam 0.30.10 / Wasm scalar ===
+element_sum: 1
+dot(ONE): 1
+=== glam 0.30.10 / ARM64 scalar-math ===
+element_sum: 1
+dot(ONE): 1
+=== glam 0.33.12 / ARM64 NEON ===
+element_sum: 0
+dot(ONE): 0
+=== glam 0.33.12 / Wasm scalar ===
+element_sum: 1
+dot(ONE): 1
+=== glam 0.33.12 / ARM64 scalar-math ===
+element_sum: 1
+dot(ONE): 1

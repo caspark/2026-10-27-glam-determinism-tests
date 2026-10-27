@@ -1,0 +1,14 @@
+[package]
+name = "vector-safe-verification"
+version = "0.0.0"
+edition = "2021"
+default-run = "vector-safe-verification"
+
+[workspace]
+
+[dependencies]
+glam = { version = "=0.30.10", features = ["libm", "scalar-math"] }
+
+[[bin]]
+name = "zero-selection"
+path = "src/zero.rs"

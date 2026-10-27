@@ -1,0 +1,4 @@
+element_sum: 0
+dot(ONE): 0
+normalize.z: 0.90453404
+cross.x: -1

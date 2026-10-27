@@ -1,0 +1,13 @@
+[package]
+name = "glam-reduction-repro"
+version = "0.0.0"
+edition = "2021"
+
+[workspace]
+
+[dependencies]
+glam = { version = "=0.33.12", features = ["libm"] }
+
+[[bin]]
+name = "glam-reduction-repro"
+path = "../main.rs"

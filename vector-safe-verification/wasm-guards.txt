@@ -1,0 +1,6 @@
+f32: 32 scalar checks passed
+f64: 32 scalar checks passed
+Vec2: 72 vector checks passed
+Vec3: 103 vector checks passed
+Vec3A: 103 vector checks passed
+Vec4: 134 vector checks passed

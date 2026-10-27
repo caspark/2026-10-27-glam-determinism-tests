@@ -1,0 +1,22 @@
+[package]
+name = "glam-reduction-repro"
+version = "0.0.0"
+edition = "2021"
+default-run = "glam-reduction-repro"
+
+[workspace]
+
+[dependencies]
+glam = { version = "=0.34.1", features = ["libm"] }
+
+[[bin]]
+name = "glam-reduction-repro"
+path = "../audit.rs"
+
+[[bin]]
+name = "glam-zero-probe"
+path = "../zero.rs"
+
+[[bin]]
+name = "glam-report-repro"
+path = "../report.rs"

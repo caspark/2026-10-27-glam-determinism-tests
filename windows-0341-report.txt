@@ -1,0 +1,15 @@
+=== default ===
+element_sum: 0
+dot(ONE): 2
+normalize.z: 0.904534
+cross.x: 0
+=== scalar ===
+element_sum: 1
+dot(ONE): 1
+normalize.z: 0.90453404
+cross.x: 0
+=== +fma ===
+element_sum: 0
+dot(ONE): 2
+normalize.z: 0.904534
+cross.x: -1

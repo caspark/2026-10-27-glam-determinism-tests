@@ -1,0 +1,22 @@
+rustc 1.94.0 (4a4ef493e 2026-03-02)
+binary: rustc
+commit-hash: 4a4ef493e3a1488c6e321570238084b38948f6db
+commit-date: 2026-03-02
+host: x86_64-unknown-linux-gnu
+release: 1.94.0
+LLVM version: 21.1.8
+cargo 1.94.0 (85eff7c80 2026-01-15)
+RUSTFLAGS=
+CARGO_ENCODED_RUSTFLAGS=
+=== glam 0.30.10 / Linux default backend ===
+element_sum: 0
+dot(ONE): 2
+=== glam 0.30.10 / Linux scalar-math ===
+element_sum: 1
+dot(ONE): 1
+=== glam 0.33.12 / Linux default backend ===
+element_sum: 0
+dot(ONE): 2
+=== glam 0.33.12 / Linux scalar-math ===
+element_sum: 1
+dot(ONE): 1
