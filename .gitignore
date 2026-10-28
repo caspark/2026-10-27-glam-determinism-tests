@@ -1,5 +1,5 @@
-/build/
-/published/
+build/
+published/
 *.crate
 target/
 .DS_Store

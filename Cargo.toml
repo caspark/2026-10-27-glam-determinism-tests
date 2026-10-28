@@ -1,0 +1,11 @@
+[package]
+name = "glam-determinism-repros"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+glam = { version = "=0.34.1", features = ["libm"] }
+
+[features]
+scalar-math = ["glam/scalar-math"]

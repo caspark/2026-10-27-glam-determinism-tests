@@ -157,7 +157,7 @@ With scalar-math, every measured numerical value matched. The two constant-zero 
 
 ## Reproduction files
 
-The core reproduction files are in this repository's root:
+The original reproduction files and captures are in [`../archive/`](../archive/). Run the archived commands from that directory. The primary examples and runner are in the repository root.
 
 - `audit.rs`, `v0.34.1/Cargo.toml`, `v0.34.1/Cargo.lock`: numerical probes and fixed input generator
 - `windows-0341.ps1`, `linux-0341.sh`: native runners
