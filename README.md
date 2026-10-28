@@ -1,3 +1,7 @@
+> # Slop Warning
+>
+> These breakages and the reproduction examples here were found by a coding agent - I have attempted to prune things down a bit and deslop somewhat, but obviously take the results with a grain of salt.
+
 # Glam determinism reproducers
 
 Small examples of different result bits across glam's backends. The main suite uses **glam 0.34.1 with `libm` enabled**.
@@ -40,6 +44,8 @@ Results are grouped by identical output. Each group lists the builds that produc
 `if x < 0.0 { x } else { 0.0 }` differs across targets for `x = -0.0`. Glam's comparison-based selection can produce the same symptom. This is not a glam-only defect, and the example does not establish one compiler root cause.
 
 The program starts with plain Rust, then exercises Vec2, Vec3, Vec3A, Vec4, DVec2, DVec3, and DVec4. Every operation prints adjacent `_raw` and `_safe` results. It asserts that the guarded results are +0 and that selected nonzero results stay unchanged.
+
+> Human note: the "`_safe` results" refers to versions of the below fns that canonicalize zeroes after the calculation, as implemented in [workarounds.rs](src/workarounds.rs). They're extracted from my game - in that codebase I have clippy lints that ban the non-`_safe` versions of functions.
 
 The measured cases include:
 
