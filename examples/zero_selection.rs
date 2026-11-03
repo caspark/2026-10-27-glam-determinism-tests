@@ -3,9 +3,10 @@
 //! Matching symptoms do not establish one compiler root cause
 
 use glam::{DVec2, DVec3, DVec4, Vec2, Vec3, Vec3A, Vec4};
-use glam_determinism_repros::{show, show_f64, workarounds::{
-    FloatSafeExt, VectorFloatSafeExt, canonicalize_f32_zero, canonicalize_f64_zero,
-}};
+use glam_determinism_repros::{
+    show, show_f64,
+    workarounds::{FloatSafeExt, VectorFloatSafeExt, canonicalize_f32_zero, canonicalize_f64_zero},
+};
 use std::hint::black_box;
 
 macro_rules! scalar {
@@ -21,7 +22,12 @@ macro_rules! scalar {
         ] {
             $show(&format!("rust_{}_{name}_raw", stringify!($ty)), raw);
             $show(&format!("rust_{}_{name}_safe", stringify!($ty)), safe);
-            assert_eq!(safe.to_bits(), 0, "{} {name} must return positive zero", stringify!($ty));
+            assert_eq!(
+                safe.to_bits(),
+                0,
+                "{} {name} must return positive zero",
+                stringify!($ty)
+            );
         }
     }};
 }
@@ -46,23 +52,62 @@ macro_rules! vector {
         let smooth = n.smoothstep(<$ty>::ZERO, <$ty>::ONE).x;
         for (name, raw, safe) in [
             ("min", n.min(<$ty>::ZERO).x, n.min_safe(<$ty>::ZERO).x),
-            ("max", p.max(<$ty>::splat(-0.0)).x, p.max_safe(<$ty>::splat(-0.0)).x),
-            ("clamp_upper", n.clamp(-<$ty>::ONE, <$ty>::ZERO).x, n.clamp_safe(-<$ty>::ONE, <$ty>::ZERO).x),
-            ("clamp_lower", p.clamp(<$ty>::splat(-0.0), <$ty>::ONE).x, p.clamp_safe(<$ty>::splat(-0.0), <$ty>::ONE).x),
-            ("min_element", min_with_zero(black_box(-0.0)), min_input.min_element_safe()),
-            ("max_element", max_input.max_element(), max_input.max_element_safe()),
+            (
+                "max",
+                p.max(<$ty>::splat(-0.0)).x,
+                p.max_safe(<$ty>::splat(-0.0)).x,
+            ),
+            (
+                "clamp_upper",
+                n.clamp(-<$ty>::ONE, <$ty>::ZERO).x,
+                n.clamp_safe(-<$ty>::ONE, <$ty>::ZERO).x,
+            ),
+            (
+                "clamp_lower",
+                p.clamp(<$ty>::splat(-0.0), <$ty>::ONE).x,
+                p.clamp_safe(<$ty>::splat(-0.0), <$ty>::ONE).x,
+            ),
+            (
+                "min_element",
+                min_with_zero(black_box(-0.0)),
+                min_input.min_element_safe(),
+            ),
+            (
+                "max_element",
+                max_input.max_element(),
+                max_input.max_element_safe(),
+            ),
             ("select", selected, $canonicalize(selected)),
-            ("saturate", n.saturate().x, n.clamp_safe(<$ty>::ZERO, <$ty>::ONE).x),
+            (
+                "saturate",
+                n.saturate().x,
+                n.clamp_safe(<$ty>::ZERO, <$ty>::ONE).x,
+            ),
             ("smoothstep", smooth, $canonicalize(smooth)),
         ] {
             $show(&format!("{}_{name}_raw", stringify!($ty)), raw);
             $show(&format!("{}_{name}_safe", stringify!($ty)), safe);
-            assert_eq!(safe.to_bits(), 0, "{} {name} must return positive zero", stringify!($ty));
+            assert_eq!(
+                safe.to_bits(),
+                0,
+                "{} {name} must return positive zero",
+                stringify!($ty)
+            );
         }
 
         let finite = black_box(<$ty>::splat(-3.5));
-        assert_eq!(finite.min_safe(<$ty>::ONE), finite, "{} must retain nonzero minima", stringify!($ty));
-        assert_eq!(finite.clamp_safe(-<$ty>::ONE, <$ty>::ONE), -<$ty>::ONE, "{} must retain nonzero clamp results", stringify!($ty));
+        assert_eq!(
+            finite.min_safe(<$ty>::ONE),
+            finite,
+            "{} must retain nonzero minima",
+            stringify!($ty)
+        );
+        assert_eq!(
+            finite.clamp_safe(-<$ty>::ONE, <$ty>::ONE),
+            -<$ty>::ONE,
+            "{} must retain nonzero clamp results",
+            stringify!($ty)
+        );
     }};
 }
 

@@ -13,5 +13,8 @@ fn main() {
         Vec3A::new(0.0, 4097.0, 1.0),
     ));
     show("determinant", matrix.determinant());
-    println!("inverse_exists {:08x}", u32::from(matrix.try_inverse().is_some()));
+    println!(
+        "inverse_exists {:08x}",
+        u32::from(matrix.try_inverse().is_some())
+    );
 }

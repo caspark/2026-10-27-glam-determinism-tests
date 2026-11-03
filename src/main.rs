@@ -61,14 +61,21 @@ fn main() -> ExitCode {
 fn run() -> Result<bool> {
     let mut args: Vec<_> = std::env::args().skip(1).collect();
     if args.iter().any(|arg| arg == "--help" || arg == "-h") {
-        println!("Usage: cargo run --release -- [compare|native|wasm|wasm-simd] [example] [--scalar-math]");
+        println!(
+            "Usage: cargo run --release -- [compare|native|wasm|wasm-simd] [example] [--scalar-math]"
+        );
         println!("Default: compare all examples, first with libm, then with libm + scalar-math.");
-        println!("--scalar-math runs only the scalar-math pass. Other modes print one target's results.");
-        println!("Exit codes: 0 = equal/success, 1 = compared results differ, 2 = build/runtime error.");
+        println!(
+            "--scalar-math runs only the scalar-math pass. Other modes print one target's results."
+        );
+        println!(
+            "Exit codes: 0 = equal/success, 1 = compared results differ, 2 = build/runtime error."
+        );
         println!("Examples: {}", EXAMPLES.join(", "));
         return Ok(false);
     }
-    let scalar_only = cfg!(feature = "scalar-math") || args.iter().any(|arg| arg == "--scalar-math");
+    let scalar_only =
+        cfg!(feature = "scalar-math") || args.iter().any(|arg| arg == "--scalar-math");
     args.retain(|arg| arg != "--scalar-math");
     if args.len() > 2 {
         return Err("Expected a mode and an optional example name. Use --help.".into());
@@ -93,7 +100,10 @@ fn run() -> Result<bool> {
         for &target in targets {
             build(&root, &names, target, scalar)?;
         }
-        println!("\nglam 0.34.1: libm{}", if scalar { " + scalar-math" } else { "" });
+        println!(
+            "\nglam 0.34.1: libm{}",
+            if scalar { " + scalar-math" } else { "" }
+        );
         print!("{:<48}", "example/value");
         for target in targets {
             print!(" {:>16}", target.name());
@@ -102,9 +112,14 @@ fn run() -> Result<bool> {
         let mut unequal = 0;
         let mut rows = 0;
         for &name in &names {
-            let values = targets.iter().map(|&target| example_result(&root, name, target)).collect::<Result<Vec<_>>>()?;
+            let values = targets
+                .iter()
+                .map(|&target| example_result(&root, name, target))
+                .collect::<Result<Vec<_>>>()?;
             for column in &values[1..] {
-                if column.len() != values[0].len() || column.iter().zip(&values[0]).any(|(a, b)| a.0 != b.0) {
+                if column.len() != values[0].len()
+                    || column.iter().zip(&values[0]).any(|(a, b)| a.0 != b.0)
+                {
                     return Err(format!("{name}: result labels differ between targets").into());
                 }
             }
@@ -131,7 +146,8 @@ fn run() -> Result<bool> {
 
 fn build(root: &Path, names: &[&str], target: Target, scalar: bool) -> Result<()> {
     let mut command = Command::new(std::env::var_os("CARGO").unwrap_or_else(|| "cargo".into()));
-    command.current_dir(root)
+    command
+        .current_dir(root)
         .args(["build", "--locked", "--quiet", "--release", "--target-dir"])
         .arg(target.target_dir(root))
         .env_remove("RUSTFLAGS")
@@ -158,24 +174,50 @@ fn build(root: &Path, names: &[&str], target: Target, scalar: bool) -> Result<()
 
 fn example_result(root: &Path, name: &str, target: Target) -> Result<Values> {
     let mut command = if matches!(target, Target::Native) {
-        Command::new(target.target_dir(root).join("release/examples").join(format!("{name}{}", std::env::consts::EXE_SUFFIX)))
+        Command::new(
+            target
+                .target_dir(root)
+                .join("release/examples")
+                .join(format!("{name}{}", std::env::consts::EXE_SUFFIX)),
+        )
     } else {
         let mut command = Command::new("wasmtime");
-        command.arg(target.target_dir(root).join("wasm32-wasip1/release/examples").join(format!("{name}.wasm")));
+        command.arg(
+            target
+                .target_dir(root)
+                .join("wasm32-wasip1/release/examples")
+                .join(format!("{name}.wasm")),
+        );
         command
     };
     let output = command.output().map_err(|error| {
-        let hint = if matches!(target, Target::Native) { "" } else { ". Wasm modes require the Wasmtime CLI on PATH" };
+        let hint = if matches!(target, Target::Native) {
+            ""
+        } else {
+            ". Wasm modes require the Wasmtime CLI on PATH"
+        };
         format!("{name}/{}: {error}{hint}", target.name())
     })?;
     if !output.status.success() {
-        return Err(format!("{name}/{}: {}\n{}", target.name(), output.status, String::from_utf8_lossy(&output.stderr)).into());
+        return Err(format!(
+            "{name}/{}: {}\n{}",
+            target.name(),
+            output.status,
+            String::from_utf8_lossy(&output.stderr)
+        )
+        .into());
     }
     let mut values: Values = Vec::new();
     for line in std::str::from_utf8(&output.stdout)?.lines() {
         let fields: Vec<_> = line.split_whitespace().collect();
-        if fields.len() != 2 || !matches!(fields[1].len(), 8 | 16) || u64::from_str_radix(fields[1], 16).is_err() {
-            return Err(format!("{name}: expected a label and 8 or 16 hexadecimal digits, got {line:?}").into());
+        if fields.len() != 2
+            || !matches!(fields[1].len(), 8 | 16)
+            || u64::from_str_radix(fields[1], 16).is_err()
+        {
+            return Err(format!(
+                "{name}: expected a label and 8 or 16 hexadecimal digits, got {line:?}"
+            )
+            .into());
         }
         if values.iter().any(|(label, _)| label == fields[0]) {
             return Err(format!("{name}: duplicate result label {}", fields[0]).into());

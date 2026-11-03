@@ -99,7 +99,10 @@ macro_rules! impl_vector {
 
 #[inline]
 fn canonicalize_vec2_zeros(value: Vec2) -> Vec2 {
-    Vec2::new(canonicalize_f32_zero(value.x), canonicalize_f32_zero(value.y))
+    Vec2::new(
+        canonicalize_f32_zero(value.x),
+        canonicalize_f32_zero(value.y),
+    )
 }
 
 #[inline]
@@ -119,7 +122,10 @@ fn canonicalize_vec4_zeros(value: Vec4) -> Vec4 {
 
 #[inline]
 fn canonicalize_dvec2_zeros(value: DVec2) -> DVec2 {
-    DVec2::new(canonicalize_f64_zero(value.x), canonicalize_f64_zero(value.y))
+    DVec2::new(
+        canonicalize_f64_zero(value.x),
+        canonicalize_f64_zero(value.y),
+    )
 }
 
 #[inline]

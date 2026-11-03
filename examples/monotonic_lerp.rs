@@ -10,7 +10,10 @@ fn main() {
     let b = black_box(Vec3A::splat(0.00000011920929));
     let t = black_box(0.9999999);
     show("vec3a", a.lerp_monotonic(b, t).x);
-    show("vec4", Vec4::splat(a.x).lerp_monotonic(Vec4::splat(b.x), t).x);
+    show(
+        "vec4",
+        Vec4::splat(a.x).lerp_monotonic(Vec4::splat(b.x), t).x,
+    );
 
     show("separate", a.x + (b.x - a.x) * t);
     show("fused", (b.x - a.x).mul_add(t, a.x));
